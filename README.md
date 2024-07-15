@@ -1,5 +1,5 @@
-# prj301-se1849-07
-## Tiệm Sách Vui Vẻ (Group 7) 
+# prj301 Project
+## Member:
 1. Đỗ Anh Tú (SE172104)
 2. Phạm Duy Hoàng (SE172046)
 3. Đặng Thị Ngọc Ánh (SE172088)
