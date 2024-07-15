@@ -45,8 +45,6 @@ public interface BookDAO {
     public List<BookDTO> getBookListByPublisherID(int id);
 
     public List<BookDTO> getBookListByTitle(String title);
-    
-    public List<BookDTO> getRelatedBook(int bookID, int categoryID);
 
     public double getRatingByBookID(int id);
 

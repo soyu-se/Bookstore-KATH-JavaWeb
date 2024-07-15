@@ -7,7 +7,6 @@ package Controller;
 
 import DAO.BookDAO;
 import DAO.Implement.BookDAOImp;
-import Model.CategoryDTO;
 import Model.ShoppingCartDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,7 +40,6 @@ public class ShoppingCartController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String quantityString = request.getParameter("quantity");
-            
             String increasing = request.getParameter("increasing");
             String decreasing = request.getParameter("decreasing");
             String bookIDString = request.getParameter("bookID");
@@ -95,10 +93,6 @@ public class ShoppingCartController extends HttpServlet {
                     }
                 } else if (quantityString != null) {
                     int quantity = Integer.parseInt(quantityString);
-                    
-                    if (quantity < 0) {
-                        quantity = 0;
-                    }
 
                     if (quantity > 0) {
                         for (ShoppingCartDTO book : cartList) {
@@ -147,11 +141,9 @@ public class ShoppingCartController extends HttpServlet {
                 session.setAttribute("totalCartPrice", totalPrice);
             }
 
-            List<CategoryDTO> categoryList = bookDAO.getAllCategory();
-            request.setAttribute("categoryList", categoryList);
 //            String buyingNow = request.getParameter("buyingNow");
-//            response.sendRedirect("shoppingcart.jsp");
-            request.getRequestDispatcher("shoppingcart.jsp").forward(request, response);
+                response.sendRedirect("shoppingcart.jsp");
+//            request.getRequestDispatcher("shoppingcart.jsp").forward(request, response);
         }
     }
 

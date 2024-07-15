@@ -86,16 +86,12 @@
                     <div class="col-lg-12">
                         <div id="margin-top_inherit" class="row g-4">
                             <div class="col-xl-3">
-                                <form action="./search">
                                 <div class="input-group w-100 mx-auto d-flex">
-                                    <input type="text" name="searchBookInput" class="form-control p-3" placeholder="Book Title"
+                                    <input type="search" class="form-control p-3" placeholder="keywords"
                                            aria-describedby="search-icon-1" value="${searching}">
-                                    <button type="submit">
-                                            <i class="fa fa-search p-2"></i>
-                                        </span>
-                                    </button>
+                                    <span id="search-icon-1" class="input-group-text p-3"><i
+                                            class="fa fa-search"></i></span>
                                 </div>
-                                </form>
                             </div>
                             <div class="col-6 d-flex">
                                 <!-- URL Info -->
@@ -112,7 +108,7 @@
                                     </ol>
                                 </nav>
                             </div>
-<!--                            <div class="col-xl-3">
+                            <div class="col-xl-3">
                                 <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
                                     <label for="books">Default Sorting:</label>
                                     <select id="books" name="booklist" class="border-0 form-select-sm bg-light me-3 px-3"
@@ -131,7 +127,7 @@
                                         </option>
                                     </select>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
                         <div class="row g-4">
                             <div class="col-lg-3">
@@ -365,23 +361,24 @@
 
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        <jsp:include page="footer.jsp"></jsp:include>
+<!--        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
             <div class="container py-5">
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
                                 <h1 class="text-primary mb-0">Books</h1>
-                                <!-- <p class="text-secondary mb-0">Book products</p> -->
+                                 <p class="text-secondary mb-0">Book products</p> 
                             </a>
                         </div>
-<!--                        <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <div class="position-relative mx-auto">
                                 <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
                                 <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
                             </div>
-                        </div>-->
-                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
                                 <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
@@ -397,7 +394,7 @@
 
                     <div class="">
                         <div class="footer-item">
-                            <!-- <h4 class="text-light mb-3">Contact</h4> -->
+                             <h4 class="text-light mb-3">Contact</h4> 
                             <div id="footer_image" class="col-md-12"><p>
                                     <img src="images/header_image/KATH_label.png" class="img-fluid" alt="KATH"></p>
                             </div>
@@ -405,13 +402,12 @@
                             <p>Email: Example@gmail.com</p>
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
-                            <!--<img id="momo_payment" src="images/footer_payment/momo_pay.png" class="img-fluid" alt="">-->
-                            <p><strong>COD</strong></p>
+                            <img id="momo_payment" src="images/footer_payment/momo_pay.png" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Footer End -->
 
         <!-- Copyright Start -->

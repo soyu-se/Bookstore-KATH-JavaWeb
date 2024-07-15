@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="container-fluid bg-dark text-white-50 footer pt-5">
-    <div class="container py-5">
+    <div class="container py-5 d-block">
         <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
             <div class="row g-4">
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <a href="#">
                         <h1 class="text-primary mb-0">Books</h1>
                         <!-- <p class="text-secondary mb-0">Book products</p> -->
@@ -18,7 +18,7 @@
                                 style="top: 0; right: 0;">Subscribe Now</button>
                     </div>
                 </div>-->
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="d-flex justify-content-end pt-3">
                         <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
                                 class="fab fa-twitter"></i></a>
@@ -42,8 +42,7 @@
                 </div>
                 <div class="right-col w-50 text-end">
                     <p>Payment Accepted</p>
-                    <!--<img id="momo_payment" src="images/footer_payment/momo_pay.png" class="img-fluid" alt="Momo Payment" style="width: 5%;">-->
-                    <p><strong>COD</strong></p>
+                    <img id="momo_payment" src="images/footer_payment/momo_pay.png" class="img-fluid" alt="Momo Payment" style="width: 5%;">
                 </div>
             </div>
         </div>

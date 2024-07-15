@@ -46,25 +46,25 @@ public class CheckoutController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            HttpSession session = request.getSession();
-            UserDTO user = (UserDTO) session.getAttribute("usersession");
-            
+
             String action = request.getParameter("action");
             if (action != null) {
                 switch (action) {
                     case "orderConfirmation":
-
+                        
                         String address = request.getParameter("address");
                         String city = request.getParameter("city");
                         String district = request.getParameter("district");
                         String ward = request.getParameter("ward");
 
+                        HttpSession session = request.getSession();
+                        UserDTO user = (UserDTO) session.getAttribute("usersession");
+
                         if (user == null) {
                             response.sendRedirect("account.jsp");
                             return;
                         }
-
+                        
                         BookDAO bookDAO = new BookDAOImp();
 
                         double tottalPrice = (double) session.getAttribute("totalCartPrice");
@@ -100,9 +100,9 @@ public class CheckoutController extends HttpServlet {
                                 orderBook.setAmount(item.getAmount());
                                 orderBook.setImage(item.getImage());
                                 orderBook.setPrice(item.getPrice());
-
+                                
                                 orderBookDAO.insertToOrder(orderBook);
-
+                                
                                 // Update Book Quantity
                                 bookDAO.updateQuantityByBookID(item.getBookID(), item.getAmount());
                             }

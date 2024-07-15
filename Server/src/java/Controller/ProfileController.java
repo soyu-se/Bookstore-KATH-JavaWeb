@@ -5,14 +5,9 @@ package Controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import DAO.Implement.OrderBookDAOImp;
-import DAO.Implement.OrderDAOImp;
+
 import DAO.Implement.UserDAOImp;
-import DAO.OrderBookDAO;
-import DAO.OrderDAO;
 import DAO.UserDAO;
-import Model.OrderBookDTO;
-import Model.OrderDTO;
 import Model.UserDTO;
 import Utility.Hash;
 import Utility.MyTools;
@@ -21,9 +16,6 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -53,8 +45,7 @@ public class ProfileController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 //        request.setCharacterEncoding("UTF-8");
-
-
+        
 
         String url = null;
         boolean isDeleted = false;
@@ -64,35 +55,7 @@ public class ProfileController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             UserDTO user = (UserDTO) session.getAttribute("usersession");
-            
-            if(user == null) {
-                response.sendRedirect("./homepage");
-                return;
-            }
-            
             UserDAO userDAO = new UserDAOImp();
-
-            // This is so f**** amazing, it makes me f*** love learning algorithm
-            // Load from Database to Profile (Order History) | Start
-            OrderDAO orderDAO = new OrderDAOImp();
-            OrderBookDAO orderBookDAO = new OrderBookDAOImp();
-            List<OrderDTO> orderList = orderDAO.getOrderListByUserID(user.getId());
-
-            Map<Integer, List<OrderBookDTO>> orderBooksMap = new HashMap<>();
-
-            for (OrderDTO orderMap : orderList) {
-                List<OrderBookDTO> orderBooks = orderBookDAO.getAll(orderMap.getOrderID());
-                orderBooksMap.put(orderMap.getOrderID(), orderBooks);
-            }
-
-//                for (OrderDTO order : orderList) {
-//                    orderBookList = orderBookDAO.getAll(order.getOrderID());
-//                }
-            session.setAttribute("orderList", orderList);
-            session.setAttribute("orderBookList", orderBooksMap);
-
-            // Load from Database to Profile (Order History) | End
-            session.setMaxInactiveInterval(60 * 60 * 12);
 
             String action = request.getParameter("action");
             if (action != null) {
@@ -223,6 +186,8 @@ public class ProfileController extends HttpServlet {
                         userDAO.updateShippingAddress(user);
 //                        System.out.println("user: \n" + user);
                         session.setAttribute("usersession", user);
+
+                        break;
                 }
             }
 
@@ -230,7 +195,6 @@ public class ProfileController extends HttpServlet {
                 url = "profile.jsp";
 //                request.getRequestDispatcher(url).forward(request, response);
                 response.sendRedirect(url);
-//                response.sendRedirect(request.getHeader("referer"));
             } else {
                 url = "./homepage";
                 response.sendRedirect(url);

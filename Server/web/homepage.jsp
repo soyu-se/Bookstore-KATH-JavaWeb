@@ -38,7 +38,7 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white col-md-10 d-flex" id="navbarCollapse">
                         <div class="navbar-nav mx-auto col-md-7 w-50 justify-content-space-between">
-                            <a href="./homepage" class="nav-item nav-link">Home</a>
+                            <a href="homepage.jsp" class="nav-item nav-link">Home</a>
                             <a href="#" class="nav-item nav-link">About</a>
                             <div class="nav-item dropdown">
                                 <a href="./shop" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Book
@@ -56,9 +56,9 @@
                                     </c:forEach>
                                 </div>
                             </div>
-                            <!--<a href="detailpage.html" class="nav-item nav-link">Detail</a>-->
-                            <!--<a href="#" class="nav-item nav-link">Feedback</a>-->
-                            <a href="#" id="scrollToBottom" class="nav-item nav-link">Contact</a>
+                            <a href="detailpage.html" class="nav-item nav-link">Detail</a>
+                            <a href="#" class="nav-item nav-link">Feedback</a>
+                            <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0 col-md-3 js-signin-modal-trigger">
                             <a class="my-auto mx-auto" href="./shopping_cart">
@@ -73,7 +73,7 @@
                                 <i class="fas fa-user fa-2x"></i>
                                 <c:if test="${sessionScope.usersession != null}">
                                     <div class="font-weight-bold mb-negative-1">
-                                        ${sessionScope.usersession.firstName} ${sessionScope.usersession.lastName}
+                                        ${sessionScope.usersession.firstName} ${sessionScope.usersession.lastName} ${sessionScope.usersession.id}
                                     </div>
                                 </c:if>
                             </a>
@@ -123,68 +123,68 @@
         <!-- Hero End -->
 
         <!-- Category List Start -->
-        <!--        <div class="container py-0 category-for-all rounded-2">
-                    <div class="category-subtitle border-bottom">
-                        <h1>Category List</h1>
-                    </div>
-                    <div class="container-fluid d-flex mt-3">
-        <c:forEach items="${categoryList}" var="o">
-            <div class="col-md-2 category-description">
-                <a href="category?categoryName=${o.categoryName}&categoryID=${o.categoryID}" class="link-category">
-                    <div class="category-image rounded-2">
-                        <img src="images/category_image/manga.jpg" alt="Manga">
-                    </div>
-                    <div class="text-description text-center">${o.categoryName}</div>
-                </a>
+<!--        <div class="container py-0 category-for-all rounded-2">
+            <div class="category-subtitle border-bottom">
+                <h1>Category List</h1>
             </div>
-        </c:forEach>
+            <div class="container-fluid d-flex mt-3">
+                <c:forEach items="${categoryList}" var="o">
+                    <div class="col-md-2 category-description">
+                        <a href="category?categoryName=${o.categoryName}&categoryID=${o.categoryID}" class="link-category">
+                            <div class="category-image rounded-2">
+                                <img src="images/category_image/manga.jpg" alt="Manga">
+                            </div>
+                            <div class="text-description text-center">${o.categoryName}</div>
+                        </a>
+                    </div>
+                </c:forEach>
 
-                        <div class="col-md-2 category-description">
-                            <a href="#" class="link-category">
-                                <div class="category-image rounded-2">
-                                    <img src="images/category_image/child.jpg" alt="Child Book">
+                                <div class="col-md-2 category-description">
+                                    <a href="#" class="link-category">
+                                        <div class="category-image rounded-2">
+                                            <img src="images/category_image/child.jpg" alt="Child Book">
+                                        </div>
+                                        <div class="text-description text-center">Child</div>
+                                    </a>
                                 </div>
-                                <div class="text-description text-center">Child</div>
-                            </a>
-                        </div>
-        
-                        <div class="col-md-2 category-description">
-                            <a href="#" class="link-category">
-                                <div class="category-image rounded-2">
-                                    <img src="images/category_image/novel.jpg" alt="Novel">
+                
+                                <div class="col-md-2 category-description">
+                                    <a href="#" class="link-category">
+                                        <div class="category-image rounded-2">
+                                            <img src="images/category_image/novel.jpg" alt="Novel">
+                                        </div>
+                                        <div class="text-description text-center">Novel</div>
+                                    </a>
                                 </div>
-                                <div class="text-description text-center">Novel</div>
-                            </a>
-                        </div>
-        
-                        <div class="col-md-2 category-description">
-                            <a href="#" class="link-category">
-                                <div class="category-image rounded-2">
-                                    <img src="images/category_image/history.jpg" alt="Histoty Book">
+                
+                                <div class="col-md-2 category-description">
+                                    <a href="#" class="link-category">
+                                        <div class="category-image rounded-2">
+                                            <img src="images/category_image/history.jpg" alt="Histoty Book">
+                                        </div>
+                                        <div class="text-description text-center">History</div>
+                                    </a>
                                 </div>
-                                <div class="text-description text-center">History</div>
-                            </a>
-                        </div>
-        
-                        <div class="col-md-2 category-description">
-                            <a href="#" class="link-category">
-                                <div class="category-image rounded-2">
-                                    <img src="images/category_image/textbook.jpg" alt="Textbook">
+                
+                                <div class="col-md-2 category-description">
+                                    <a href="#" class="link-category">
+                                        <div class="category-image rounded-2">
+                                            <img src="images/category_image/textbook.jpg" alt="Textbook">
+                                        </div>
+                                        <div class="text-description text-center">Textbook</div>
+                                    </a>
                                 </div>
-                                <div class="text-description text-center">Textbook</div>
-                            </a>
-                        </div>
-        
-                        <div class="col-md-2 category-description">
-                            <a href="#" class="link-category">
-                                <div class="category-image rounded-2">
-                                    <img src="images/category_image/daily.jpg" alt="Daily Book">
+                
+                                <div class="col-md-2 category-description">
+                                    <a href="#" class="link-category">
+                                        <div class="category-image rounded-2">
+                                            <img src="images/category_image/daily.jpg" alt="Daily Book">
+                                        </div>
+                                        <div class="text-description text-center">Daily</div>
+                                    </a>
                                 </div>
-                                <div class="text-description text-center">Daily</div>
-                            </a>
-                        </div>
-    </div>
-</div>-->
+            </div>
+        </div>-->
         <!-- Category List End -->
 
         <!-- Bonus 4 Fun -->
@@ -260,11 +260,9 @@
                 <div id="literature_content" class="content">
                     <div class="row pb-3">
                         <div class="col-md-5 content-first img-fluid">
-                            <c:set var="i" value="${1}"></c:set>
                             <c:forEach items="${bestSellerScienceList}" var="o">
                                 <a href="book_detail?title=${o.title}&bookID=${o.bookID}" class="first-best-book">
-                                    <div class="col-md-.5 fas fa-arrow-up d-flex flex-column justify-content-center px-2 text-success text-center">${i}</div>
-                                    <c:set var="i" value="${i+1}"></c:set>
+                                    <div class="col-md-.5 fas fa-arrow-up d-flex flex-column justify-content-center px-2"> 01 </div>
                                     <img src="${o.image}" alt="" class="col-md-1">
                                     <div class="col-md-5 description-text w-60 m-3 d-flex flex-direction-column left-0 w-60 ml-3 d-flex flex-direction-column">${o.title}</div>
                                 </a>
@@ -402,11 +400,9 @@
                 <div id="foreign_content" class="content">
                     <div class="row">
                         <div class="col-md-5 content-first img-fluid">
-                            <c:set var="i" value="${1}"></c:set>
                             <c:forEach items="${bestSellerMysteryList}" var="o">
                                 <a href="book_detail?title=${o.title}&bookID=${o.bookID}" class="first-best-book">
-                                    <div class="col-md-.5 fas fa-arrow-up d-flex flex-column justify-content-center px-2 text-success text-center">${i}</div>
-                                    <c:set var="i" value="${i+1}"></c:set>
+                                    <div class="col-md-.5 fas fa-arrow-up d-flex flex-column justify-content-center px-2"> 01 </div>
                                     <img src="${o.image}" alt="" class="col-md-1">
                                     <div class="col-md-5 description-text w-60 m-3 d-flex flex-direction-column left-0 w-60 ml-3 d-flex flex-direction-column">${o.title}</div>
                                 </a>
@@ -549,11 +545,9 @@
                 <div id="economic_content" class="content">
                     <div class="row">
                         <div class="col-md-5 content-first">
-                            <c:set var="i" value="${1}"></c:set>
                             <c:forEach items="${bestSellerLightNovelList}" var="o">
                                 <a href="book_detail?title=${o.title}&bookID=${o.bookID}" class="first-best-book">
-                                    <div class="col-md-.5 fas fa-arrow-up d-flex flex-column justify-content-center px-2 text-success text-center">${i}</div>
-                                    <c:set var="i" value="${i+1}"></c:set>
+                                    <div class="col-md-.5 fas fa-arrow-up d-flex flex-column justify-content-center px-2"> 01 </div>
                                     <img src="${o.image}" alt="" class="col-md-1">
                                     <div class="col-md-5 description-text w-60 m-3 d-flex flex-direction-column left-0">${o.title}</div>
                                 </a>
@@ -1018,7 +1012,7 @@
                                         ${Math.round(o.rate * 10.0) / 10.0} <i class="fa fa-star text-secondary"></i>
                                     </p>
                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                        <p class="text-dark fs-5 fw-bold">$${o.price}</p>
+                                        <p class="text-dark fs-5 fw-bold">$4.99</p>
                                         <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary">
                                             <i class="fa fa-shopping-bag me-2 text-primary"></i> 
                                             Add to cart
@@ -1258,16 +1252,6 @@
         <!-- Embeded Javascript -->
         <script src="./js/homepage.js"></script>
         <script src="js/main.js"></script>
-        <script>
-            document.getElementById('scrollToBottom').addEventListener('click', function (e) {
-                e.preventDefault();
-
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: 'smooth'
-                });
-            });
-        </script>
 
     </body>
 

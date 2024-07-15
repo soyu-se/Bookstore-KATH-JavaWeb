@@ -211,8 +211,6 @@
                                             </p>
                                             <p>
                                                 <span class="text-danger fw-bold">$${o.price}</span>
-                                                <br>
-                                                <span class="font-weight-bold">x${o.amount}</span>
                                             </p>
                                         </div>
                                         <hr class="my-4">

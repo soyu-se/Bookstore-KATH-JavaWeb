@@ -102,7 +102,7 @@
                                         <span class="fw-bold">
                                             ${book.sold}
                                         </span>
-
+                                        
                                     </div>
                                 </div>
                                 <div class="row justify-content-space-between">
@@ -144,7 +144,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <nav>
-                                    <div class="nav nav-tabs mb-3" style="margin-bottom: 3rem !important;">
+                                    <div class="nav nav-tabs mb-3">
                                         <button class="nav-link active border-white border-bottom-0" type="button"
                                                 role="tab" id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
                                                 aria-controls="nav-about" aria-selected="true">Reviews</button>
@@ -154,7 +154,7 @@
 
                                 </div>
                             <c:if test="${sessionScope.usersession != null}">
-                                <form action="./book_detail" method="POST" class="mt-5">
+                                <form action="./book_detail" method="POST">
                                     <h4 class="mb-4 fw-bold">Leave a Reply</h4>
                                     <div class="d-flex align-items-center mb-4">
                                         <p class="mb-0 me-3">Please rate:</p>
@@ -171,9 +171,8 @@
                                             <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
                                         </fieldset>
                                         <!--<h4 id="rating-value"></h4>-->
-                                        <input type="text" name="action" value="postComment" hidden>
                                         <input type="hidden" name="valueBookID" value="${book.bookID}" />
-                                        <input type="hidden" id="rating-value" name="rating" value="0"/>
+                                        <input type="hidden" id="rating-value" name="rating" value="2"/>
 
                                     </div>
                                     <div class="row g-4">
@@ -189,8 +188,8 @@
                                                                                 </div>-->
                                         <div class="col-lg-12">
                                             <div class="border-bottom rounded my-4">
-                                                <textarea name="comment" id="" class="form-control border-0" cols="30" rows="8"
-                                                          placeholder="Your Review *" spellcheck="false" required=""></textarea>
+                                                <textarea name="" id="" class="form-control border-0" cols="30" rows="8"
+                                                          placeholder="Your Review *" spellcheck="false"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -211,48 +210,44 @@
                             <div class="col-lg-12">
                                 <h4 class="mb-4">Same Books</h4>
                                 <c:forEach items="${relatedBooks}" var="o" begin="1" end="4">
-                                    <%--<c:if test="${not o.title eq book.title}">--%>
-                                    <a href="book_detail?title=${o.title}&bookID=${o.bookID}">
-                                        <div id="featured_item" class="d-flex align-items-center justify-content-start">
-                                            <div class="rounded" style="max-width: 40%;">
-                                                <img src="${o.image}" class="img-fluid rounded" alt="Image">
-                                            </div>
-                                            <div id="featured_item_info">
-                                                <h6 class="mb-2">${o.title}</h6>
-                                                <div class="d-flex mb-2">
-                                                    <div class="rating">
-                                                        <c:if test="${o.rate == null}">
+                                    <div id="featured_item" class="d-flex align-items-center justify-content-start">
+                                        <div class="rounded" style="max-width: 40%;">
+                                            <img src="${o.image}" class="img-fluid rounded" alt="Image">
+                                        </div>
+                                        <div id="featured_item_info">
+                                            <h6 class="mb-2">${o.title}</h6>
+                                            <div class="d-flex mb-2">
+                                                <div class="rating">
+                                                    <c:if test="${o.rate == null}">
+                                                        <i class="fa fa-star-o text-secondary"></i>
+                                                    </c:if>
+                                                    <c:if test="${o.rate != null}">
+                                                        <c:if test="${o.rate < 1}">
                                                             <i class="fa fa-star-o text-secondary"></i>
                                                         </c:if>
-                                                        <c:if test="${o.rate != null}">
-                                                            <c:if test="${o.rate < 1}">
-                                                                <i class="fa fa-star-o text-secondary"></i>
-                                                            </c:if>
-                                                            <c:forEach begin="1" end="${o.rate}" var="i">
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                            </c:forEach>
-                                                            <c:set var="ratingInteger" value="${fn:substringBefore(o.rate, '.')}" />
-                                                            <c:set var="diff" value="${o.rate - ratingInteger}" />
-                                                            <c:if test="${diff >= 0.5}">
-                                                                <i class="fa fa-star-half text-secondary"></i>
-                                                            </c:if>
+                                                        <c:forEach begin="1" end="${o.rate}" var="i">
+                                                            <i class="fa fa-star text-secondary"></i>
+                                                        </c:forEach>
+                                                        <c:set var="ratingInteger" value="${fn:substringBefore(o.rate, '.')}" />
+                                                        <c:set var="diff" value="${o.rate - ratingInteger}" />
+                                                        <c:if test="${diff >= 0.5}">
+                                                            <i class="fa fa-star-half text-secondary"></i>
                                                         </c:if>
+                                                    </c:if>
 
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2 text-danger">${o.price}</h5>
                                                 </div>
                                             </div>
+                                            <div class="d-flex mb-2">
+                                                <h5 class="fw-bold me-2 text-danger">${o.price}</h5>
+                                            </div>
                                         </div>
-                                    </a>
-                                    <%--</c:if>--%>
+                                    </div>
                                 </c:forEach>
-<!--                                <div id="featured_item" class="d-flex justify-content-center my-4">
-                                    <a href=""
+                                <div id="featured_item" class="d-flex justify-content-center my-4">
+                                    <a href="#"
                                        class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew
                                         More</a>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -262,9 +257,9 @@
         <!-- Single Product End -->
 
 
-        <!-- Footer Start -->
+        <!-- Footer Start --><div>
         <jsp:include page="footer.jsp"></jsp:include>
-
+</div>
             <!-- Back to Top Start-->
         <%--<jsp:include page="backtotop.jsp"></jsp:include>--%>
 
@@ -284,24 +279,14 @@
                 const addToCartLink = document.getElementById('addToCartLink');
                 const buyNowLink = document.getElementById('buyNowLink');
 
-                // Function to update quantity and validate
-                function updateQuantity() {
-                    let newQuantity = parseInt(quantityInput.value);
-                    if (isNaN(newQuantity) || newQuantity < 1) {
-                        quantity = 1; // Set to 1 if the input is not a number or less than 1
-                    } else {
-                        quantity = newQuantity;
-                    }
-                    quantityInput.value = quantity;
-                    updateLinks();
-                }
+                let quantity = parseInt(quantityInput.value);
 
                 // Function to update links
                 function updateLinks() {
-                    const baseAddToCartUrl = `add_to_cart?title=${book.title}&bookID=${book.bookID}&quantity=`;
-                    const baseBuyNowUrl = `add_to_cart?buyNow=true&title=${book.title}&bookID=${book.bookID}&quantity=`;
-                    addToCartLink.href = baseAddToCartUrl + quantity;
-                    buyNowLink.href = baseBuyNowUrl + quantity;
+                    const baseAddToCartUrl = "add_to_cart?title=${book.title}&bookID=${book.bookID}&quantity=";
+                    const baseBuyNowUrl = "add_to_cart?buyNow=true&title=${book.title}&bookID=${book.bookID}&quantity=";
+                    addToCartLink.href = baseAddToCartUrl + quantityInput.value;
+                    buyNowLink.href = baseBuyNowUrl + quantityInput.value;
                 }
 
                 // Event listener for minus button
@@ -321,13 +306,16 @@
                 });
 
                 // Event listener for input change
-                quantityInput.addEventListener('input', updateQuantity);
+                quantityInput.addEventListener('input', function () {
+//                    quantity += quantityInput.value;
+//                    quantityInput.value = quantity;
+                    updateLinks();
+                });
 
-                // Initialize quantity and links on page load
-                updateQuantity();
+                // Initialize links on page load
+                updateLinks();
             });
         </script>
-
 
 
     </body>

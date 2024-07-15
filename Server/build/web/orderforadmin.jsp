@@ -185,7 +185,7 @@
                             </div>
                         </div>
                         
-<!--                        <div class="col-lg-12 stretch-card">
+                        <div class="col-lg-12 stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Top buyers</h4>
@@ -233,7 +233,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
 
                     </div>
                 </div>

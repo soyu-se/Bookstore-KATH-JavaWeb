@@ -46,75 +46,32 @@
                                 <div class="card-body">
 
                                     <form action="BookEdit" method="GET" style="border: 1; margin: auto;" class="form-inline mx-auto">
-                                        <div class="mx-auto">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><span>ID: </span></td>
-
-                                                        <td><input name="id" value="${book.bookID}" readonly style="border: none; outline: none;"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Price: </span></td>
-                                                        <td><input name="price" value="${book.bookPrice}"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Book Title: </span></td>
-                                                        <td><input name="title" value="${book.bookTitle}"></td>
-                                                    </tr>
-                                                    <tr> 
-                                                        <td><span>Category ID: </span></td>
-                                                        <td><input name="cateID" value="${book.categoryID}" ></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Author ID:  </span></td>
-                                                        <td><input name="auhID" value="${book.authorID}" ></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Publisher ID:  </span></td>
-                                                        <td><input name="publID" value="${book.publisherID}" ></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year Public:  </span></td>
-                                                        <td><input name="year" value="${book.yearPublic}"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Quantity </span></td>
-                                                        <td><input name="quantity" value="${book.quantity}"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Description </span></td>
-                                                        <td><input name="description" value="${book.description}"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Rate: </span></td>
-                                                        <td><input name="rate" value="${book.rate}" ></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Rate Count: </span></td>
-                                                        <td><input name="ratecount" value="${book.rateCount}" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Sold: </span></td>
-                                                    <td><input name="sold" value="${book.sold}" ></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Image: </span></td>
-                                                    <td><input name="image" value="${book.image}"  ></td>
-                                                <tr>
-                                                    </tbody>
-                                            </table>
-
+                                            <div class="mx-auto">
+                                            <span>ID: </span><input name="id" value="${book.bookID}" readonly style="border: none; outline: none;"><br>
+                                            <span>Price: </span><input name="price" value="${book.bookPrice}"><br>
+                                            <span>Book Title: </span><input name="title" value="${book.bookTitle}"><br>
+                                            <span>Category ID: </span><input name="cateID" value="${book.categoryID}" product.jsp><br>
+                                            <span>Author ID:  </span><input name="auhID" value="${book.authorID}" product.jsp><br>
+                                            <span>Publisher ID:  </span><input name="publID" value="${book.publisherID}" product.jsp><br>
+                                            <span>Year Public:  </span><input name="year" value="${book.yearPublic}"><br>
+                                            <span>Quantity </span><input name="quantity" value="${book.quantity}"><br>
+                                            <span>Description </span><input name="description" value="${book.description}"><br>
+                                            <span>Rate: </span><input name="rate" value="${book.rate}" product.jsp><br>
+                                            <span>Rate Count: </span><input name="ratecount" value="${book.rateCount}" product.jsp><br>
+                                            <span>Sold: </span><input name="sold" value="${book.sold}" product.jsp><br>
+                                            <span>Image: </span><input name="image" value="${book.image}"  product.jsp><br>
+                                            
+                                            
                                             <input name="action" value="${nextaction}" type="hidden"><br>
-                                        </div>
-                                        <input type="submit" value="Update" class="py-2 btn btn-gradient-success">
-                                    </form>
+                                            </div>
+                                            <input type="submit" value="Update" class="py-2 btn btn-gradient-success">
+                                        </form>
 
 
                                 </div>
                             </div>
                         </div>
-
+                        
 
                     </div>
                 </div>

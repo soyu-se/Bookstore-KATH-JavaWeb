@@ -47,8 +47,8 @@
                                                                         <a href="shop.jsp" class="dropdown-item">Daily</a>-->
                                 </div>
                             </div>
-                            <!--<a href="#" class="nav-item nav-link">Detail</a>-->
-                            <!--<a href="#" class="nav-item nav-link">Feedback</a>-->
+                            <a href="#" class="nav-item nav-link">Detail</a>
+                            <a href="#" class="nav-item nav-link">Feedback</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0 col-md-3 js-signin-modal-trigger">
@@ -64,7 +64,7 @@
                                 <i class="fas fa-user fa-2x"></i>
                                 <c:if test="${sessionScope.usersession != null}">
                                     <div class="font-weight-bold mb-negative-1">
-                                        ${sessionScope.usersession.firstName} ${sessionScope.usersession.lastName}
+                                        ${sessionScope.usersession.firstName} ${sessionScope.usersession.lastName} ${sessionScope.usersession.id}
                                     </div>
                                 </c:if>
                             </a>

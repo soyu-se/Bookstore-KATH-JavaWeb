@@ -54,7 +54,6 @@ public class LoginController extends HttpServlet {
 //            System.out.println("remember me: " + rememberMe);
 
             HttpSession session = request.getSession();
-            HttpSession sesessionRememberMe = request.getSession();
 
             UserDAO userDAO = new UserDAOImp();
             UserDTO user = userDAO.login(username);
@@ -66,61 +65,49 @@ public class LoginController extends HttpServlet {
 
                 if (rememberMe != null) {
 //                    passwordCookie.setMaxAge(60 * 60 * 24 * 365);
-                    sesessionRememberMe.setAttribute("usernameRememberMe", username);
-//                    System.out.println(sesessionRememberMe.getAttribute("usernameRememberMe"));
-                    sesessionRememberMe.setAttribute("passwordRememberMe", password);
-                    sesessionRememberMe.setMaxInactiveInterval(60 * 60 * 24 * 31);
 
                 } else {
-                    sesessionRememberMe.removeAttribute("usernameRememberMe");
-//                    System.out.println(sesessionRememberMe.getAttribute("usernameRememberMe"));
-                    sesessionRememberMe.removeAttribute("passwordRememberMe");
 //                    session.removeAttribute("usernameCookie");
 //                    session.removeAttribute("passwordCookie");
 //                    passwordCookie.setMaxAge(0);
                 }
 //                response.addCookie(usernameCookie);
 //                response.addCookie(passwordCookie);
-
-                session.setAttribute("usersession", user);
-                session.setAttribute("isGoogleUser", false);
-
-                if (user.getRole().equals("Customer")) {
+                if(user.getRole().equals("Customer")){
                     session.setAttribute("usersession", user);
-                    session.setMaxInactiveInterval(60 * 10);
-                } else if (user.getRole().equals("Admin")) {
+                    session.setMaxInactiveInterval(60*10);
+                }else if(user.getRole().equals("Admin")){
                     session.setAttribute("adminsession", user);
-                    session.setMaxInactiveInterval(60 * 5);
+                    session.setMaxInactiveInterval(60*5);
                 }
 
-//                // This is so f**** amazing, it makes me f*** love learning algorithm
-//                // Load from Database to Profile (Order History) | Start
-//                OrderDAO orderDAO = new OrderDAOImp();
-//                OrderBookDAO orderBookDAO = new OrderBookDAOImp();
-//                List<OrderDTO> orderList = orderDAO.getOrderListByUserID(user.getId());
-//
-//                Map<Integer, List<OrderBookDTO>> orderBooksMap = new HashMap<>();
-//
-//                for (OrderDTO orderMap : orderList) {
-//                    List<OrderBookDTO> orderBooks = orderBookDAO.getAll(orderMap.getOrderID());
-//                    orderBooksMap.put(orderMap.getOrderID(), orderBooks);
+                // This is so f**** amazing, it makes me f*** love learning algorithm
+                // Load from Database to Profile (Order History) | Start
+                OrderDAO orderDAO = new OrderDAOImp();
+                OrderBookDAO orderBookDAO = new OrderBookDAOImp();
+                List<OrderDTO> orderList = orderDAO.getOrderListByUserID(user.getId());
+
+                Map<Integer, List<OrderBookDTO>> orderBooksMap = new HashMap<>();
+
+                for (OrderDTO orderMap : orderList) {
+                    List<OrderBookDTO> orderBooks = orderBookDAO.getAll(orderMap.getOrderID());
+                    orderBooksMap.put(orderMap.getOrderID(), orderBooks);
+                }
+
+//                for (OrderDTO order : orderList) {
+//                    orderBookList = orderBookDAO.getAll(order.getOrderID());
 //                }
-//
-////                for (OrderDTO order : orderList) {
-////                    orderBookList = orderBookDAO.getAll(order.getOrderID());
-////                }
-//                session.setAttribute("orderList", orderList);
-//                session.setAttribute("orderBookList", orderBooksMap);
-//
-//                // Load from Database to Profile (Order History) | End
+                session.setAttribute("orderList", orderList);
+                session.setAttribute("orderBookList", orderBooksMap);
+
+                // Load from Database to Profile (Order History) | End
                 session.setMaxInactiveInterval(60 * 60 * 12);
-
-                if (user.getRole().equals("Customer")) {
-                    url = "./homepage";
-                } else {
+                    
+                if(user.getRole().equals("Admin")){
                     url = "./AdminHomepage";
+                }else if(user.getRole().equals("Customer")){
+                    url = "./homepage";
                 }
-
                 response.sendRedirect(url);
             } else {
                 String errorMessage = "Username or password is incorrect";

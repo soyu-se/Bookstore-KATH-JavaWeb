@@ -54,7 +54,6 @@ public class GoogleLoginController extends HttpServlet {
                     oldUser.setAvatarPath(googleUser.getPicture());
                     HttpSession session = request.getSession();
                     session.setAttribute("usersession", oldUser);
-                    session.setAttribute("isGoogleUser", true);
 //                    Cookie usernameCookie = new Cookie("usernameCookie", oldUser.getUsername());
 //                    Cookie passwordCookie = new Cookie("passwordCookie", password);
 //                    usernameCookie.setMaxAge(60 * 60 * 24 * 365);
@@ -89,7 +88,7 @@ public class GoogleLoginController extends HttpServlet {
                 }
             } else {
                 UserDTO user = new UserDTO();
-
+                        
                 user.setUsername(Hash.SHA256(googleUser.getEmail()));
                 user.setPasswordHashed(Hash.SHA256(generateRandomString(10)));
                 user.setFirstName(googleUser.getFamily_name() != null ? googleUser.getFamily_name() : "");

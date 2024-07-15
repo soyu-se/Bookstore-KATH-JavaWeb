@@ -33,7 +33,7 @@ public class BookEdit extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String title = request.getParameter("title");
         float price = Float.parseFloat(request.getParameter("price"));
         int year = Integer.parseInt(request.getParameter("year"));

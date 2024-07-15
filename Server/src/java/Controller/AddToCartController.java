@@ -61,8 +61,7 @@ public class AddToCartController extends HttpServlet {
                     response.sendRedirect("./shopping_cart");
                     return;
                 }
-//                response.sendRedirect("./shop");
-                response.sendRedirect(request.getHeader("referer"));
+                response.sendRedirect("./shop");
             } else {
                 cartList = cartListSession;
                 boolean isBookExisted = false;
@@ -82,8 +81,7 @@ public class AddToCartController extends HttpServlet {
                         }
 //                        System.out.println(cart.getAmount() + " at 2");
 
-//                        response.sendRedirect("./shop");
-                        response.sendRedirect(request.getHeader("referer"));
+                        response.sendRedirect("./shop");
                     }
                 }
                 if (!isBookExisted) {
@@ -94,8 +92,7 @@ public class AddToCartController extends HttpServlet {
                         response.sendRedirect("./shopping_cart");
                         return;
                     }
-//                    response.sendRedirect("./shop");
-                    response.sendRedirect(request.getHeader("referer"));
+                    response.sendRedirect("./shop");
                 }
             }
 

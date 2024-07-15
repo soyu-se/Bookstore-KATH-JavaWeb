@@ -35,7 +35,7 @@ public class SorController extends HttpServlet {
             String contextPath = request.getContextPath();
 
             if (currentURI.equals(contextPath + "/shop")) {
-                
+
             } else if (currentURI.equals(contextPath + "/category?categoryName=Science&categoryID=1")) {
 
             } else if (currentURI.equals(contextPath + "/category?categoryName=Mystery&categoryID=2")) {

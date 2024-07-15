@@ -154,53 +154,51 @@
                             </form>
 
                             <!-- Change password -->
-                            <c:if test="${sessionScope.isGoogleUser == false}">
-                                <form class="file-upload" action="./profile" method="POST" enctype="multipart/form-data">
-                                    <div class="">
-                                        <div class="px-4 py-4 rounded">
-                                            <div class="row g-3">
-                                                <h4 class="">Change Password</h4>
-                                                <!-- Old password -->
-                                                <c:if test="${requestScope.errorProfileMessage != null}">
-                                                    <div class="alert alert-danger" role="alert">
-                                                        ${requestScope.errorProfileMessage}
-                                                    </div>
-                                                </c:if>
-                                                <c:if test="${requestScope.successfulMessage != null}">
-                                                    <div class="alert alert-success" role="alert">
-                                                        ${requestScope.successfulMessage}
-                                                    </div>
-                                                </c:if>
-                                                <div class="col-md-6">
-                                                    <label for="exampleInputPassword1" class="form-label">Old password
-                                                        *</label>
-                                                    <input name="oldPassword" type="password" class="form-control" id="exampleInputPassword1" required="">
+                            <form class="file-upload" action="./profile" method="POST" enctype="multipart/form-data">
+                                <div class="">
+                                    <div class="px-4 py-4 rounded">
+                                        <div class="row g-3">
+                                            <h4 class="">Change Password</h4>
+                                            <!-- Old password -->
+                                            <c:if test="${requestScope.errorProfileMessage != null}">
+                                                <div class="alert alert-danger" role="alert">
+                                                    ${requestScope.errorProfileMessage}
                                                 </div>
-                                                <!-- New password -->
-                                                <div class="col-md-6">
-                                                    <label for="exampleInputPassword2" class="form-label">New password
-                                                        *</label>
-                                                    <input name="newPassword" type="password" class="form-control" id="exampleInputPassword2" required="">
+                                            </c:if>
+                                            <c:if test="${requestScope.successfulMessage != null}">
+                                                <div class="alert alert-success" role="alert">
+                                                    ${requestScope.successfulMessage}
                                                 </div>
-                                                <!-- Confirm password -->
-                                                <div class="col-md-12">
-                                                    <label for="exampleInputPassword3" class="form-label">Confirm Password
-                                                        *</label>
-                                                    <input name="passwordConfirmed" type="password" class="form-control" id="exampleInputPassword3" required="">
-                                                </div>
-                                                <!-- button -->
-                                                <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                                                    <!-- <button type="button" class="btn btn-danger btn-lg">Delete profile</button> -->
-                                                    <button type="submit" name="action" value="changePassword"
-                                                            class="btn btn-danger">
-                                                        Change Password
-                                                    </button>
-                                                </div>
+                                            </c:if>
+                                            <div class="col-md-6">
+                                                <label for="exampleInputPassword1" class="form-label">Old password
+                                                    *</label>
+                                                <input name="oldPassword" type="password" class="form-control" id="exampleInputPassword1" required="">
+                                            </div>
+                                            <!-- New password -->
+                                            <div class="col-md-6">
+                                                <label for="exampleInputPassword2" class="form-label">New password
+                                                    *</label>
+                                                <input name="newPassword" type="password" class="form-control" id="exampleInputPassword2" required="">
+                                            </div>
+                                            <!-- Confirm password -->
+                                            <div class="col-md-12">
+                                                <label for="exampleInputPassword3" class="form-label">Confirm Password
+                                                    *</label>
+                                                <input name="passwordConfirmed" type="password" class="form-control" id="exampleInputPassword3" required="">
+                                            </div>
+                                            <!-- button -->
+                                            <div class="gap-3 d-md-flex justify-content-md-end text-center">
+                                                <!-- <button type="button" class="btn btn-danger btn-lg">Delete profile</button> -->
+                                                <button type="submit" name="action" value="changePassword"
+                                                        class="btn btn-danger">
+                                                    Change Password
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </c:if>
+                                </div>
+                            </form>
                         </div>
                         <!-- Row END -->
                     </div>
@@ -251,7 +249,7 @@
                                                     <strong>#${o.orderID}</strong>
                                                 </span>
                                                 <br/>
-                                                <strong>Unit Quantity : ${o.unitQuantity}</strong>
+                                                <strong>Quantity : ${o.unitQuantity}</strong>
                                                 <br/>
                                                 <strong>Cost: $${o.totalPrice}</strong>
                                                 <br/>

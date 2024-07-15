@@ -103,7 +103,7 @@ public class HomepageController extends HttpServlet {
             if (user != null) {
                 switch (user.getRole()) {
                     case "Customer":
-                        String redirectUrl = "./profile";
+                        String redirectUrl = "profile.jsp";
                         session.setAttribute("redirectUrl", redirectUrl);
                         break;
                     case "Admin":

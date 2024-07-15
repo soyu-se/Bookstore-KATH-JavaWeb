@@ -11,7 +11,7 @@ function handleKeyDown(event, input, bookID) {
 
 function updateValue(input) {
     if (input.value.trim() === '' || parseInt(input.value) < 0) {
-        input.value = '1';
+        input.value = '${o.amount}';
     } else {
         // Cập nhật giá trị của thuộc tính value
         input.setAttribute('value', input.value);

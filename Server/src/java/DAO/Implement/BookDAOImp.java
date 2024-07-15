@@ -765,28 +765,4 @@ public class BookDAOImp implements BookDAO {
         return bookList;
     }
 
-    @Override
-    public List<BookDTO> getRelatedBook(int bookID, int categoryID) {
-        List<BookDTO> bookList = new ArrayList<>();
-
-        try (Connection con = DBUtils.getConnection()) {
-            String sql = "SELECT * FROM Book\n"
-                    + "WHERE Category_ID = ? AND Book_ID != ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, categoryID);
-            stmt.setInt(2, bookID);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                bookList.add(getResultSet(rs));
-            }
-
-            con.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-
-        return bookList;
-    }
-
 }
